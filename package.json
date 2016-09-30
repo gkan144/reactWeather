@@ -31,6 +31,11 @@
     "babel-preset-es2016": "^6.16.0",
     "babel-preset-es2017": "^6.16.0",
     "babel-preset-react": "^6.16.0",
+    "css-loader": "^0.25.0",
+    "foundation-sites": "^6.2.3",
+    "jquery": "^2.2.4",
+    "script-loader": "^0.7.0",
+    "style-loader": "^0.13.1",
     "webpack": "^1.13.2"
   }
 }
