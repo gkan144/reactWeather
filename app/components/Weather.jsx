@@ -30,8 +30,6 @@ export default class Weather extends React.Component {
     super(props);
     this.state = {
       isLoading: false,
-      location: "Some city",
-      temp: 88
     }
   }
 
@@ -57,7 +55,7 @@ export default class Weather extends React.Component {
     function renderMessage() {
       if(isLoading) return <h3>Fetching weather...</h3>;
       else if (temp && location) return <WeatherMessage temp={temp} location={location}/>;
-      else return <h3>Problem with form state</h3>
+      else return <h3>Search for city</h3>
     }
 
     return <div>
