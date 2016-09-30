@@ -2,6 +2,28 @@ import React from 'react';
 
 import openWeatherMap from '../../api/openWeatherMap';
 
+class WeatherForm extends React.Component {
+  onFormSubmit(event) {
+    event.preventDefault();
+    var location = this.refs.location.value;
+    if(location.trim().length>0) {
+      this.refs.location.value = '';
+      this.props.onSearch(location);
+    }
+  }
+
+  render() {
+    return <form onSubmit={this.onFormSubmit.bind(this)} method="POST">
+      <input type="text" placeholder="Enter city name" ref="location"/>
+      <button>Get Weather</button>
+    </form>;
+  }
+}
+
+var WeatherMessage = (props) => {
+  return <h3>Temperature is {props.temp} in {props.location}</h3>;
+};
+
 export default class Weather extends React.Component {
 
   constructor(props) {
@@ -15,8 +37,7 @@ export default class Weather extends React.Component {
 
   handleSearch(location) {
     this.setState({isLoading: true});
-    debugger;
-    openWeatherMap(location).then((result)=>{
+    openWeatherMap(location).then((result) => {
       this.setState({
         isLoading: false,
         location: location,
@@ -44,32 +65,5 @@ export default class Weather extends React.Component {
       <WeatherForm onSearch={this.handleSearch.bind(this)}/>
       {renderMessage()}
     </div>;
-  }
-}
-
-class WeatherForm extends React.Component {
-  onFormSubmit(event) {
-    event.preventDefault();
-    var location = this.refs.location.value;
-    if(location.trim().length>0) {
-      this.refs.location.value = '';
-      this.props.onSearch(location);
-    }
-  }
-
-  render() {
-    return <form onSubmit={this.onFormSubmit.bind(this)} method="POST">
-      <input type="text" placeholder="Enter city name" ref="location"/>
-      <button>Get Weather</button>
-    </form>;
-  }
-}
-
-class WeatherMessage extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-  render() {
-    return <h3>Temperature is {this.props.temp} in {this.props.location}</h3>;
   }
 }
