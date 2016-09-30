@@ -3,8 +3,8 @@ import Nav from "./Nav";
 
 var Main = (props) => {
     return <div>
-      <Nav />
-      {props.children}
+        <Nav />
+        {props.children}
     </div>;
 };
 
