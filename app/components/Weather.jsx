@@ -2,7 +2,7 @@ import React from 'react';
 
 import ErrorModal from './ErrorModal';
 
-import openWeatherMap from '../../api/openWeatherMap';
+import openWeatherMap from '../api/openWeatherMap';
 
 class WeatherForm extends React.Component {
   onFormSubmit(event) {
@@ -16,7 +16,7 @@ class WeatherForm extends React.Component {
 
   render() {
     return <form onSubmit={this.onFormSubmit.bind(this)} method="POST">
-      <input type="text" placeholder="Enter city name" ref="location"/>
+      <input type="search" placeholder="Search weather by city" ref="location"/>
       <button className="button expanded hollow">Get Weather</button>
     </form>;
   }
@@ -68,7 +68,7 @@ export default class Weather extends React.Component {
     }
 
     return <div>
-      <h1 className="text-center">Get Weather</h1>
+      <h1 className="text-center page-title">Get Weather</h1>
       <WeatherForm onSearch={this.handleSearch.bind(this)}/>
       {renderMessage()}
       {renderError()}
