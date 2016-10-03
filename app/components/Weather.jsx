@@ -15,13 +15,13 @@ class WeatherForm extends React.Component {
   render() {
     return <form onSubmit={this.onFormSubmit.bind(this)} method="POST">
       <input type="text" placeholder="Enter city name" ref="location"/>
-      <button>Get Weather</button>
+      <button className="button expanded hollow">Get Weather</button>
     </form>;
   }
 }
 
 var WeatherMessage = (props) => {
-  return <h3>Temperature is {props.temp} in {props.location}</h3>;
+  return <h3 className="text-center">Temperature is {props.temp} in {props.location}</h3>;
 };
 
 export default class Weather extends React.Component {
@@ -53,13 +53,13 @@ export default class Weather extends React.Component {
     var {isLoading, temp, location} = this.state;
 
     function renderMessage() {
-      if(isLoading) return <h3>Fetching weather...</h3>;
+      if(isLoading) return <h3 className="text-center">Fetching weather...</h3>;
       else if (temp && location) return <WeatherMessage temp={temp} location={location}/>;
       else return <h3>Search for city</h3>
     }
 
     return <div>
-      <h1>Get Weather</h1>
+      <h1 className="text-center">Get Weather</h1>
       <WeatherForm onSearch={this.handleSearch.bind(this)}/>
       {renderMessage()}
     </div>;
