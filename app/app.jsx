@@ -4,7 +4,7 @@ import {Router, Route, IndexRoute,hashHistory} from 'react-router';
 
 require('style!css!foundation-sites/dist/foundation.min.css');
 $(document).foundation();
-require('style!css!./styles/app.css');
+require('style!css!sass!./styles/app.scss');
 
 import Main from './components/Main';
 import Weather from './components/Weather';
