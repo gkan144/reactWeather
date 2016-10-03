@@ -5,6 +5,14 @@ export default class Nav extends React.Component {
 
   onSearch(event) {
     event.preventDefault();
+    var location = this.refs.search.value;
+    if(location.trim().length > 0) {
+      console.log("in listener");
+      var encodedLocation = encodeURIComponent(location);
+      this.refs.search.value = '';
+
+      window.location.hash = `#/?location=${encodedLocation}`;
+    }
   }
 
   render() {
@@ -18,9 +26,9 @@ export default class Nav extends React.Component {
         </ul>
       </div>
       <div className="top-bar-right">
-        <form onSubmit={this.onSearch}>
+        <form onSubmit={this.onSearch.bind(this)}>
           <ul className="menu">
-            <li><input type="search" placeholder="Search weather by city"/></li>
+            <li><input type="search" ref="search" placeholder="Search weather by city"/></li>
             <li><input type="submit" className="button" value="Get Weather"/></li>
           </ul>
         </form>
